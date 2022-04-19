@@ -20,9 +20,9 @@ function setup()
   cvs.drop(receivedImage);
 
   //LIVE OBJECT CLASSIFICATION HERE
-  //video = createCapture(VIDEO);
-  //video.hide();
-  //classifyVideo();
+  video = createCapture(VIDEO);
+  video.hide();
+  classifyVideo();
 }
 
 function classifyVideo()
@@ -39,6 +39,7 @@ function classifyImage(img)
 function draw() 
 {
   drawUI("", instr);
+  
 }
 
 function receivedImage(file)
@@ -67,34 +68,43 @@ function gotResults(error, results)
   drawUI("Result: " + results[0].label, instr );
 
   
-  //classifyVideo();
+  classifyVideo();
 }
 
 function drawUI(lbl, instr)
 {
   //UI
-  background(0);
+  background(219,112,147);
+  image(video, 0, 0);
+  
+  
   //ONLY RELEVANT WITH STATIC IMAGES
+  // fill(255);
+  // noStroke();
+  // textSize(24);
+  // textAlign(CENTER, CENTER);
+  // text(lbl, windowWidth / 2, windowHeight / 2);
+  
+  // if(instr === instr)
+  // {
+  //   fill(128, 128, 128);
+  //   rect(windowWidth / 2 - 175, windowHeight / 2 + 50, 350, 100);
+  //   fill(255);
+  //   text(instr, windowWidth / 2, windowHeight / 2 + 100);
+  // }
+  // if(instr === "")
+  // {
+  //   console.log("here");
+  //   fill(0);
+  //   rect(windowWidth / 2 - 175, windowHeight / 2 + 50, 350, 100);
+  // }
+  // noLoop();
   fill(255);
   noStroke();
-  textSize(24);
+  textSize(48);
   textAlign(CENTER, CENTER);
   text(lbl, windowWidth / 2, windowHeight / 2);
-  
-  if(instr === instr)
-  {
-    fill(128, 128, 128);
-    rect(windowWidth / 2 - 175, windowHeight / 2 + 50, 350, 100);
-    fill(255);
-    text(instr, windowWidth / 2, windowHeight / 2 + 100);
-  }
-  if(instr === "")
-  {
-    console.log("here");
-    fill(0);
-    rect(windowWidth / 2 - 175, windowHeight / 2 + 50, 350, 100);
-  }
-  noLoop();
+
 }
 
 function windowResized() 
